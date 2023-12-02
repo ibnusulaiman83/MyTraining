@@ -1,0 +1,31 @@
+﻿@model List<MyTraining.Models.Domain.Employee>
+@{
+}
+
+<h1>List of Employees </h1>
+
+<a asp-controller="Employees" asp-action="Add" class="btn btn-success">Add New Employee </a>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Date of Birth</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.Name</td>
+                <td>@employee.Department</td>
+                <td>@employee.BirthDay.ToString("dd-MM-yyyy")</td>
+                <td><a href="/Employees/View/@employee.Id">View Info</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
