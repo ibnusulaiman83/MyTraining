@@ -37,7 +37,8 @@ namespace MyTraining.Controllers
                 Id = Guid.NewGuid(),
                 Name = addEmployeeRequest.Name,
                 BirthDay = addEmployeeRequest.BirthDay,
-                Department = addEmployeeRequest.Department
+                Department = addEmployeeRequest.Department,
+                Email = addEmployeeRequest.Email
             };
 
             await myTrainingDbContext.Employees.AddAsync(employee);
@@ -56,7 +57,8 @@ namespace MyTraining.Controllers
                     Id = employee.Id,
                     Name = employee.Name,
                     BirthDay = employee.BirthDay,
-                    Department = employee.Department
+                    Department = employee.Department,
+                    Email = employee.Email
                 };
 
                 return await Task.Run(() => View("View", viewModel));
@@ -75,6 +77,7 @@ namespace MyTraining.Controllers
                 employee.Name =  updateEmployeeRequest.Name;
                 employee.Department = updateEmployeeRequest.Department;
                 employee.BirthDay = updateEmployeeRequest.BirthDay;
+                employee.Email = updateEmployeeRequest.Email; 
                 await myTrainingDbContext.SaveChangesAsync();
 
                 return RedirectToAction("Index");
